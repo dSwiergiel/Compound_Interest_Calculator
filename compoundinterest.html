@@ -24,6 +24,7 @@
         margin-top: 5vh;
       }
 
+
       h6,
       h5,
       h4,
@@ -99,7 +100,7 @@
             <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
           </div>
           <div class="form-group mb-2">
-            <label for="contribution">Contribution ($)</label>
+            <label for="deposits">Contribution ($)</label>
 
             <div class="input-group ">
               <div class="input-group-prepend">
@@ -107,8 +108,8 @@
                   <i class="fas fa-minus"></i>
                 </button>
               </div>
-              <input id="contribution" type="number" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"
-                value="500" min="1" />
+              <input id="deposits" type="number" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"
+                value="500" min="0" step="100" />
               <div class="input-group-append">
                 <button class="btn btn-outline-secondary btn-sm" type="button">
                   <i class="fas fa-plus"></i>
@@ -130,14 +131,14 @@
           </div>
 
           <div class="form-group mb-4">
-            <label for="initialPrinciple">Rate (%)</label>
+            <label for="interestRatePercentage">Rate (%)</label>
             <div class="input-group ">
               <div class="input-group-prepend">
                 <button class="btn btn-outline-secondary btn-sm" type="button">
                   <i class="fas fa-minus"></i>
                 </button>
               </div>
-              <input id="initialPrinciple" type="number" class="form-control" placeholder="" aria-label=""
+              <input id="interestRatePercentage" type="number" class="form-control" placeholder="" aria-label=""
                 aria-describedby="basic-addon1" value="7.75" step=".25" min="1" />
               <div class="input-group-append">
                 <button class="btn btn-outline-secondary btn-sm" type="button">
@@ -148,7 +149,7 @@
             <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
           </div>
           <div class="form-group mb-4">
-            <label for="initialPrinciple">Years</label>
+            <label for="numberOfYears">Years</label>
             <div class="input-group ">
               <div class="input-group-prepend">
                 <button class="btn btn-outline-secondary btn-sm" type="button">
@@ -165,7 +166,7 @@
             </div>
           </div>
           <div class="form-group ">
-            <label for="compoundFrequency">Compound frequency</label> <br />
+            <label for="compoundFrequencyRadio">Compound frequency</label> <br />
             <div class="custom-control custom-radio d-inline-block">
               <input type="radio" id="dailyCompoundRadio" name="compoundFrequencyRadio" class="custom-control-input" />
               <label class="custom-control-label" for="dailyCompoundRadio">Daily</label>
@@ -187,166 +188,348 @@
       </div>
     </div>
   </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
 
   <script>
-    var ctx = document.getElementById("compoundInterestChart");
-    var myChart = new Chart(ctx, {
-      type: "bar",
+    var compoundInterestChart;
 
-      data: {
-        labels: [12, 19, 3, 5, 2, 3],
-        datasets: [{
+    var years = [];
+    var yearlyTotalDeposits = [];
+    var yearlyTotalInterest = [];
+
+    var initialPrincipleValue
+    var depositsValue
+
+    var monthlyDepositRadio
+    var annualDepositRadio
+
+    var interestRatePercentageValue
+    var numberOfYearsValue
+
+    var dailyCompoundRadio
+    var monthlyCompoundRadio
+    var annualCompoundRadio
+
+    const formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 0
+    })
+
+
+    $(document).ready(function () {
+      calculateFutureValue();
+
+      $('input').change(function () {
+        calculateFutureValue();
+      });
+    });
+
+
+    function calculateFutureValue() {
+      years = [];
+      yearlyTotalDeposits = [];
+      yearlyTotalInterest = [];
+
+      let totalDepositsValue = 0;
+      let totalInterestValue = 0;
+
+      initialPrincipleValue = +$('#initialPrinciple').val();
+      depositsValue = +$('#deposits').val();
+      console.log("DEPOSITSVALUE", depositsValue)
+
+      monthlyDepositRadio = $('#monthlyDepositRadio').is(':checked');
+      annualDepositRadio = $('#annualDepositRadio').is(':checked');
+
+      interestRatePercentageValue = +$('#interestRatePercentage').val();
+      numberOfYearsValue = +$('#numberOfYears').val();
+
+      dailyCompoundRadio = $('#dailyCompoundRadio').is(':checked');
+      monthlyCompoundRadio = $('#monthlyCompoundRadio').is(':checked');
+      annualCompoundRadio = $('#annualCompoundRadio').is(':checked');
+
+
+      console.log("initialPrincipleValue", initialPrincipleValue);
+      console.log("depositsValue", depositsValue);
+      console.log("monthlyDepositRadio", monthlyDepositRadio);
+      console.log("annualDepositRadio", annualDepositRadio);
+      console.log("interestRatePercentageValue", interestRatePercentageValue);
+      console.log("numberOfYearsValue", numberOfYearsValue);
+      console.log("dailyCompoundRadio", dailyCompoundRadio);
+      console.log("monthlyCompoundRadio", monthlyCompoundRadio);
+      console.log("annualCompoundRadio", annualCompoundRadio);
+
+      // // Future Value
+      // var initialPrinciple = 3000;
+      // var deposit = 1000;
+      // var annualRate = 8;
+      // var monthlyRate = annualRate / 12 / 100;
+      // var dailyRate = annualRate / 365 / 100;
+      // var numberOfYears = 30;
+      // var months = numberOfYears * 12;
+      // var futureValue = initialPrinciple;
+
+      // Future Value
+      var initialPrinciple = initialPrincipleValue;
+      var deposit = depositsValue;
+      var annualRate = interestRatePercentageValue;
+      var monthlyRate = annualRate / 12 / 100;
+      var dailyRate = annualRate / 365 / 100;
+      var numberOfYears = numberOfYearsValue;
+      var months = numberOfYears * 12;
+      var futureValue = initialPrinciple;
+      var compoundFrequency = 0;
+      var rate = 0.00;
+
+      // compound frequency and rate
+      if (dailyCompoundRadio) {
+        rate = dailyRate;
+        compoundFrequency = numberOfYears * 365;
+      } else if (monthlyCompoundRadio) {
+        rate = monthlyRate;
+        compoundFrequency = numberOfYears * 12;
+      } else if (annualCompoundRadio) {
+        rate = annualRate;
+        compoundFrequency = numberOfYears;
+      }
+
+      for (i = 1; i <= +compoundFrequency; i++) {
+
+        // if daily compounded, must change deposit according to whether it's monthly or annually
+        if (dailyCompoundRadio) {
+          // if monthly
+          if (monthlyDepositRadio) {
+            // every 30 days make a deposit
+            if (i % 30 == 0) {
+              depsoit = +depositsValue;
+              totalDepositsValue += +depositsValue;
+              console.log(totalDepositsValue)
+
+              // else don't
+            } else {
+              deposit = 0;
+            }
+            // if annually
+          } else if (annualDepositRadio) {
+            // every year make a deposit
+            if (i % 365 == 0) {
+              depsoit = +depositsValue;
+              totalDepositsValue += +depositsValue;
+
+              // else don't
+            } else {
+              deposit = 0;
+            }
+          }
+        } else {
+              totalDepositsValue += +depositsValue;
+        }
+
+        futureValue = (futureValue + deposit) * (1 + rate);
+        console.log(futureValue)
+
+        // compound frequency and rate
+        if (dailyCompoundRadio) {
+          if (i % 365 == 0) {
+            totalInterestValue = futureValue - totalDepositsValue;
+            yearlyTotalInterest.push(totalInterestValue);
+            yearlyTotalDeposits.push(totalDepositsValue + initialPrinciple);
+          }
+        } else if (monthlyCompoundRadio) {
+          if (i % 12 == 0) {
+            totalInterestValue = futureValue - totalDepositsValue;
+            yearlyTotalInterest.push(totalInterestValue);
+            yearlyTotalDeposits.push(totalDepositsValue + initialPrinciple);
+          }
+        } else if (annualCompoundRadio) {
+            totalInterestValue = futureValue - totalDepositsValue;
+            yearlyTotalInterest.push(totalInterestValue);
+            yearlyTotalDeposits.push(totalDepositsValue + initialPrinciple);
+        }
+
+      }
+
+      var currentYear = (new Date()).getFullYear();
+
+      for (let i = 1; i <= numberOfYears; i++) {
+        years.push(currentYear + i);
+      }
+      console.log(years)
+      console.log(futureValue)
+      console.log(yearlyTotalDeposits)
+
+      if (window.compoundInterestChart) {
+        window.compoundInterestChart.destroy();
+      }
+
+      updateChart();
+    }
+
+
+
+
+
+
+    function updateChart() {
+
+      var ctx = document.getElementById("compoundInterestChart");
+      window.compoundInterestChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: years,
+          datasets: [{
             label: "Total Deposits",
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-              "rgba(255, 99, 132, 0.2)",
-              "rgba(54, 162, 235, 0.2)",
-              "rgba(255, 206, 86, 0.2)",
-              "rgba(75, 192, 192, 0.2)",
-              "rgba(153, 102, 255, 0.2)",
-              "rgba(255, 159, 64, 0.2)"
-            ],
-            borderColor: [
-              "rgba(255,99,132,1)",
-              "rgba(54, 162, 235, 1)",
-              "rgba(255, 206, 86, 1)",
-              "rgba(75, 192, 192, 1)",
-              "rgba(153, 102, 255, 1)",
-              "rgba(255, 159, 64, 1)"
-            ],
+            data: yearlyTotalDeposits,
+            backgroundColor: "rgba(54, 162, 235, 0.4)",
+
+            borderColor: "rgba(54, 162, 235, 1)",
+
             borderWidth: 1
           },
           {
             label: "Total Interest",
-            data: [17, 33, 2, 1, 66, 2],
-            backgroundColor: [
-              "rgba(255, 99, 132, 0.2)",
-              "rgba(54, 162, 235, 0.2)",
-              "rgba(255, 206, 86, 0.2)",
-              "rgba(75, 192, 192, 0.2)",
-              "rgba(153, 102, 255, 0.2)",
-              "rgba(255, 159, 64, 0.2)"
-            ],
-            borderColor: [
-              "rgba(255,99,132,1)",
-              "rgba(54, 162, 235, 1)",
-              "rgba(255, 206, 86, 1)",
-              "rgba(75, 192, 192, 1)",
-              "rgba(153, 102, 255, 1)",
-              "rgba(255, 159, 64, 1)"
-            ],
+            data: yearlyTotalInterest,
+            backgroundColor: 
+              "rgba(46,139,87, .4)",
+
+            borderColor: 
+              "rgba(46,139,87, 1)",
+
             borderWidth: 1
           }
-        ]
-      },
-      options: {
-        scales: {
-          xAxes: [{
-            stacked: true,
-            id: 'first-x-axis',
-          }],
-          yAxes: [{
-            stacked: true,
-            ticks: {
-              // Include a dollar sign in the ticks
-              callback: function (value, index, values) {
-                return '$' + value;
+          ]
+        },
+        options: {
+          tooltips: {
+            mode: 'index',
+            intersect: false,
+            callbacks: {
+
+              label: function (multiTooltipTemplate, data) {
+                return formatter.format(multiTooltipTemplate.yLabel);
               }
+              // label: function (tooltipItem, data) {
+              //   return "$" + Number(tooltipItem.yLabel).toFixed(0).replace(/./g, function (c, i, a) {
+              //     return i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "," + c : c;
+              //   });
             }
-
-          }]
-        }
-      }
-    });
-  </script>
-  <!-- 
-    <script>
-      var barChartData = {
-        labels: [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July"
-        ],
-        datasets: [
-          {
-            label: "Dataset 1",
-            backgroundColor: window.chartColors.red,
-            data: [
-              randomScalingFactor(),
-              randomScalingFactor(),
-              randomScalingFactor(),
-              randomScalingFactor(),
-              randomScalingFactor(),
-              randomScalingFactor(),
-              randomScalingFactor()
-            ]
           },
-          {
-            label: "Dataset 2",
-            backgroundColor: window.chartColors.blue,
-            data: [
-              randomScalingFactor(),
-              randomScalingFactor(),
-              randomScalingFactor(),
-              randomScalingFactor(),
-              randomScalingFactor(),
-              randomScalingFactor(),
-              randomScalingFactor()
-            ]
-          }
-        ]
-      };
-      window.onload = function() {
-        var ctx = document
-          .getElementById("compoundInterestChart")
-          .getContext("2d");
-        window.myBar = new Chart(ctx, {
-          type: "bar",
-          data: barChartData,
-          options: {
-            title: {
-              display: true,
-              text: "Chart.js Bar Chart - Stacked"
-            },
-            tooltips: {
-              mode: "index",
-              intersect: false
-            },
-            responsive: true,
-            scales: {
-              xAxes: [
-                {
-                  stacked: true
-                }
-              ],
-              yAxes: [
-                {
-                  stacked: true
-                }
-              ]
-            }
-          }
-        });
-      };
 
-      document
-        .getElementById("randomizeData")
-        .addEventListener("click", function() {
-          barChartData.datasets.forEach(function(dataset) {
-            dataset.data = dataset.data.map(function() {
-              return randomScalingFactor();
-            });
-          });
-          window.myBar.update();
-        });
-    </script> -->
+          scales: {
+            xAxes: [{
+              stacked: true,
+              id: 'first-x-axis',
+            }],
+            yAxes: [{
+              stacked: true,
+              ticks: {
+                // Include a dollar sign in the ticks
+                callback: function (value, index, values) {
+                  return formatter.format(value);
+                }
+              }
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
-    crossorigin="anonymous"></script>
+            }]
+          }
+        }
+      });
+    }
+
+  </script>
+  <script>
+    // var barChartData = {
+    //   labels: years,
+    //   datasets: [{
+    //     label: "Total Deposits",
+    //     data: yearlyTotalDeposits,
+    //     backgroundColor: [
+    //       "rgba(255, 99, 132, 0.2)",
+    //       "rgba(54, 162, 235, 0.2)",
+    //       "rgba(255, 206, 86, 0.2)",
+    //       "rgba(75, 192, 192, 0.2)",
+    //       "rgba(153, 102, 255, 0.2)",
+    //       "rgba(255, 159, 64, 0.2)"
+    //     ],
+    //     borderColor: [
+    //       "rgba(255,99,132,1)",
+    //       "rgba(54, 162, 235, 1)",
+    //       "rgba(255, 206, 86, 1)",
+    //       "rgba(75, 192, 192, 1)",
+    //       "rgba(153, 102, 255, 1)",
+    //       "rgba(255, 159, 64, 1)"
+    //     ],
+    //     borderWidth: 1
+    //   },
+    //   {
+    //     label: "Total Interest",
+    //     data: yearlyTotalInterest,
+    //     backgroundColor: [
+    //       "rgba(255, 99, 132, 0.2)",
+    //       "rgba(54, 162, 235, 0.2)",
+    //       "rgba(255, 206, 86, 0.2)",
+    //       "rgba(75, 192, 192, 0.2)",
+    //       "rgba(153, 102, 255, 0.2)",
+    //       "rgba(255, 159, 64, 0.2)"
+    //     ],
+    //     borderColor: [
+    //       "rgba(255,99,132,1)",
+    //       "rgba(54, 162, 235, 1)",
+    //       "rgba(255, 206, 86, 1)",
+    //       "rgba(75, 192, 192, 1)",
+    //       "rgba(153, 102, 255, 1)",
+    //       "rgba(255, 159, 64, 1)"
+    //     ],
+    //     borderWidth: 1
+    //   }
+    //   ]
+    // };
+    // window.onload = function () {
+    //   var ctx = document
+    //     .getElementById("compoundInterestChart")
+    //     .getContext("2d");
+    //   window.myBar = new Chart(ctx, {
+    //     type: "bar",
+    //     data: barChartData,
+    //     options: {
+    //       tooltips: {
+    //         mode: 'index',
+    //         intersect: false
+    //       },
+    //       scales: {
+    //         xAxes: [{
+    //           stacked: true,
+    //           id: 'first-x-axis',
+    //         }],
+    //         yAxes: [{
+    //           stacked: true,
+    //           ticks: {
+    //             // Include a dollar sign in the ticks
+    //             callback: function (value, index, values) {
+    //               return '$' + value;
+    //             }
+    //           }
+
+    //         }]
+    //       }
+    //     }
+    //   });
+    // };
+
+    // document
+    //   .getElementById("randomizeData")
+    //   .addEventListener("click", function () {
+    //     barChartData.datasets.forEach(function (dataset) {
+    //       dataset.data = dataset.data.map(function () {
+    //         return randomScalingFactor();
+    //       });
+    //     });
+    //     window.myBar.update();
+    //   });
+  </script>
+
+
 </body>
 
 </html>
