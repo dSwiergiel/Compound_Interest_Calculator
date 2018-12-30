@@ -21,20 +21,23 @@
 
       .container {
         max-width: 1000px;
+        margin-top: 5vh;
       }
 
-      h6 h5 h4 {
+      h6,
+      h5,
+      h4,
+      h3,
+      h2 {
         -webkit-font-smoothing: antialiased;
         border-width: 0;
-        color: rgba(0, 0, 0, 0.54);
+        /* color: rgba(0, 0, 0, 0.54); */
         font-family: "Roboto", sans-serif;
-        font-size: 22.1px;
-        left: -5px;
         margin: 0;
         padding: 0;
         position: relative;
         text-rendering: optimizelegibility;
-        top: -6px;
+        /* font-weight: 200; */
         vertical-align: baseline;
       }
 
@@ -46,9 +49,10 @@
         box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
       }
 
-      @media (max-width: 1200) {
+      @media (max-width: 800px) {
         .container {
           max-width: 900px;
+          margin-top: 2vh;
         }
       }
     </style>
@@ -63,7 +67,7 @@
         Compound Interest Calculator
       </h2>
       <h5 class="quote card-title text-center">
-        “Compound interest is the eighth wonder of the world. He who
+        “Compound interest is the eighth wonder of the world. <br />He who
         understands it, earns it... he who doesn't... pays it.”
       </h5>
       <h6 class="card-subtitle mt-2 mb-2 text-center text-muted quote">
@@ -75,7 +79,7 @@
         <div class="col-md-4">
           <div class="form-group">
             <label for="initialPrinciple">Initial principle ($)</label>
-            <div class="input-group mb-3">
+            <div class="input-group mb-4">
               <div class="input-group-prepend">
                 <button class="btn btn-outline-secondary btn-sm" type="button">
                   <i class="fas fa-minus"></i>
@@ -89,9 +93,90 @@
                 </button>
               </div>
             </div>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
             <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
           </div>
+          <div class="form-group mb-2">
+            <label for="contribution">Contribution ($)</label>
+
+            <div class="input-group ">
+              <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary btn-sm" type="button">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+              <input id="contribution" type="number" class="form-control" placeholder="" aria-label=""
+                aria-describedby="basic-addon1" value="500" min="1" />
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary btn-sm" type="button">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+            </div>
+            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+          </div>
+          <div class="form-group mb-4">
+              <div class="custom-control custom-radio d-inline-block">
+                <input type="radio" id="monthlyDepositRadio" name="customRadio" class="custom-control-input" checked="">
+                <label class="custom-control-label" for="monthlyDepositRadio">Monthly</label>
+              </div>
+              <div class="custom-control custom-radio d-inline-block">
+                <input type="radio" id="annualDepositRadio" name="customRadio" class="custom-control-input">
+                <label class="custom-control-label" for="annualDepositRadio">Annually</label>
+              </div>
+
+            </div>
+
+          <div class="form-group mb-4">
+            <label for="initialPrinciple">Rate (%)</label>
+            <div class="input-group ">
+              <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary btn-sm" type="button">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+              <input id="initialPrinciple" type="number" class="form-control" placeholder="" aria-label=""
+                aria-describedby="basic-addon1" value="3000" min="1" />
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary btn-sm" type="button">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+            </div>
+            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+          </div>
+          <div class="form-group">
+              <label for="initialPrinciple">Years</label>
+              <div class="input-group ">
+                <div class="input-group-prepend">
+                  <button class="btn btn-outline-secondary btn-sm" type="button">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </div>
+                <input id="numberOfYears" type="number" class="form-control" placeholder="" aria-label=""
+                  aria-describedby="basic-addon1" value="10" min="1" />
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary btn-sm" type="button">
+                    <i class="fas fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="form-group mb-4">
+                <label for="compoundFrequency">Compound frequency</label>
+                <br>
+                <div class="custom-control custom-radio d-inline-block">
+                  <input type="radio" id="dailyCompoundRadio" name="customRadio" class="custom-control-input" checked="">
+                  <label class="custom-control-label" for="dailyCompoundRadio">Daily</label>
+                </div>
+                <div class="custom-control custom-radio d-inline-block">
+                  <input type="radio" id="monthlyCompoundRadio" name="customRadio" class="custom-control-input">
+                  <label class="custom-control-label" for="monthlyCompoundRadio">Monthly</label>
+                </div>
+                <div class="custom-control custom-radio d-inline-block">
+                    <input type="radio" id="annualCompoundRadio" name="customRadio" class="custom-control-input">
+                    <label class="custom-control-label" for="annualCompoundRadio">Annually</label>
+                  </div>
+              </div>
         </div>
         <div class="col-md-8">
           <canvas id="compoundInterestChart" width="400" height="325"></canvas>
@@ -99,7 +184,6 @@
       </div>
     </div>
   </div>
-
 
   <script>
     var ctx = document.getElementById("compoundInterestChart");
