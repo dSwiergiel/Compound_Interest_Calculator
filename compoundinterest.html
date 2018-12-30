@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Compound Interest Calculator</title>
+  <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+    crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet" />
+  <style>
+    body {
+        background-color: #eee;
+      }
+
+      .quote {
+        font-style: italic;
+      }
+
+      .container {
+        max-width: 1000px;
+      }
+
+      h6 h5 h4 {
+        -webkit-font-smoothing: antialiased;
+        border-width: 0;
+        color: rgba(0, 0, 0, 0.54);
+        font-family: "Roboto", sans-serif;
+        font-size: 22.1px;
+        left: -5px;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        text-rendering: optimizelegibility;
+        top: -6px;
+        vertical-align: baseline;
+      }
+
+      .form-control {
+        text-align: center;
+      }
+
+      .cardShadow {
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+      }
+
+      @media (max-width: 1200) {
+        .container {
+          max-width: 900px;
+        }
+      }
+    </style>
+</head>
+
+<body class="container">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+
+  <div class="card cardShadow">
+    <div class="card-body">
+      <h2 class="card-title text-center mb-3">
+        Compound Interest Calculator
+      </h2>
+      <h5 class="quote card-title text-center">
+        “Compound interest is the eighth wonder of the world. He who
+        understands it, earns it... he who doesn't... pays it.”
+      </h5>
+      <h6 class="card-subtitle mt-2 mb-2 text-center text-muted quote">
+        ~ Albert Einstein
+      </h6>
+      <hr />
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="initialPrinciple">Initial principle ($)</label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary btn-sm" type="button">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+              <input id="initialPrinciple" type="number" class="form-control" placeholder="" aria-label=""
+                aria-describedby="basic-addon1" value="3000" min="1" />
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary btn-sm" type="button">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+            </div>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+          </div>
+        </div>
+        <div class="col-md-8">
+          <canvas id="compoundInterestChart" width="400" height="325"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    var ctx = document.getElementById("compoundInterestChart");
+    var myChart = new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        datasets: [{
+          label: "# of Votes",
+          data: [12, 19, 3, 5, 2, 3],
+          backgroundColor: [
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(255, 206, 86, 0.2)",
+            "rgba(75, 192, 192, 0.2)",
+            "rgba(153, 102, 255, 0.2)",
+            "rgba(255, 159, 64, 0.2)"
+          ],
+          borderColor: [
+            "rgba(255,99,132,1)",
+            "rgba(54, 162, 235, 1)",
+            "rgba(255, 206, 86, 1)",
+            "rgba(75, 192, 192, 1)",
+            "rgba(153, 102, 255, 1)",
+            "rgba(255, 159, 64, 1)"
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
+  </script>
+  <!-- 
+    <script>
+      var barChartData = {
+        labels: [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July"
+        ],
+        datasets: [
+          {
+            label: "Dataset 1",
+            backgroundColor: window.chartColors.red,
+            data: [
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor()
+            ]
+          },
+          {
+            label: "Dataset 2",
+            backgroundColor: window.chartColors.blue,
+            data: [
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor()
+            ]
+          }
+        ]
+      };
+      window.onload = function() {
+        var ctx = document
+          .getElementById("compoundInterestChart")
+          .getContext("2d");
+        window.myBar = new Chart(ctx, {
+          type: "bar",
+          data: barChartData,
+          options: {
+            title: {
+              display: true,
+              text: "Chart.js Bar Chart - Stacked"
+            },
+            tooltips: {
+              mode: "index",
+              intersect: false
+            },
+            responsive: true,
+            scales: {
+              xAxes: [
+                {
+                  stacked: true
+                }
+              ],
+              yAxes: [
+                {
+                  stacked: true
+                }
+              ]
+            }
+          }
+        });
+      };
+
+      document
+        .getElementById("randomizeData")
+        .addEventListener("click", function() {
+          barChartData.datasets.forEach(function(dataset) {
+            dataset.data = dataset.data.map(function() {
+              return randomScalingFactor();
+            });
+          });
+          window.myBar.update();
+        });
+    </script> -->
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
