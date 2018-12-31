@@ -13,10 +13,18 @@
   <style>
     body {
         background-color: #eee;
+        letter-spacing: 2px;
+      }
+      .header{
+        font-weight: 200;
       }
 
       .quote {
         font-style: italic;
+        font-weight: 200;
+        text-align: center;
+        letter-spacing: 2px;
+        color: #333;
       }
 
       .container {
@@ -24,7 +32,16 @@
         margin-top: 5vh;
       }
 
+      label {
+        color: #333!important;
+      }
 
+      .finalTotals {
+        
+        font-weight: bold;
+        font-size: 1.06rem;
+
+      }
       h6,
       h5,
       h4,
@@ -39,7 +56,7 @@
         position: relative;
         letter-spacing: 5px;
         text-rendering: optimizelegibility;
-        /* font-weight: 200; */
+        
         vertical-align: baseline;
       }
 
@@ -67,16 +84,17 @@
 
   <div class="card cardShadow">
     <div class="card-body">
-      <h2 class="card-title text-center mb-3">
+      <h2 class=" text-center mb-3 header">
         Compound Interest Calculator
       </h2>
-      <h5 class="quote card-title text-center">
+      <h5 class="quote card-subtitle " >
         “Compound interest is the eighth wonder of the world. <br />He who
-        understands it, earns it... he who doesn't... pays it.”
-      </h5>
-      <h6 class="card-subtitle mt-2 mb-2 text-center text-muted quote">
-        ~ Albert Einstein
-      </h6>
+        understands it, earns it. he who doesn't, pays it.”
+        <h6 class="card-subtitle mt-2 mb-2 text-center text-muted quote">
+            ~ Albert Einstein
+          </h6>
+        </h5>
+
       <hr />
 
       <div class="row">
@@ -99,8 +117,8 @@
             </div>
             <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
           </div>
-          <div class="form-group mb-2">
-            <label for="deposits">Contribution ($)</label>
+          <div class="form-group mb-4">
+            <label for="deposits">Monthly contribution ($)</label>
 
             <div class="input-group ">
               <div class="input-group-prepend">
@@ -118,7 +136,7 @@
             </div>
             <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
           </div>
-          <div class="form-group mb-4">
+          <!-- <div class="form-group mb-4">
             <div class="custom-control custom-radio d-inline-block">
               <input type="radio" id="monthlyDepositRadio" name="depositFrequencyRadio" class="custom-control-input"
                 checked="" />
@@ -128,7 +146,7 @@
               <input type="radio" id="annualDepositRadio" name="depositFrequencyRadio" class="custom-control-input" />
               <label class="custom-control-label" for="annualDepositRadio">Annually</label>
             </div>
-          </div>
+          </div> -->
 
           <div class="form-group mb-4">
             <label for="interestRatePercentage">Rate (%)</label>
@@ -165,7 +183,7 @@
               </div>
             </div>
           </div>
-          <div class="form-group ">
+          <!-- <div class="form-group ">
             <label for="compoundFrequencyRadio">Compound frequency</label> <br />
             <div class="custom-control custom-radio d-inline-block">
               <input type="radio" id="dailyCompoundRadio" name="compoundFrequencyRadio" class="custom-control-input" />
@@ -180,17 +198,42 @@
               <input type="radio" id="annualCompoundRadio" name="compoundFrequencyRadio" class="custom-control-input" />
               <label class="custom-control-label" for="annualCompoundRadio">Annually</label>
             </div>
-          </div>
+          </div> -->
+          <!-- <div class="w-100 text-left">
+
+              <label class="d-inline-block ">Total Deposits: 1999999</label>
+              <label class="d-inline-block ">Total Interest: 1999999</label>
+              <label class="d-inline-block ">Total Balance: 1999999</label>
+  
+            </div> -->
+          <hr>
         </div>
         <div class="col-sm-8">
+          <div class="row">
+
+            <label class="col-md-4">
+              <h6>Total Deposits</h6> <span id="finalTotalDeposits"></span>
+            </label>
+            <label class="col-md-4">
+              <h6>Total Interest</h6> <span id="finalTotalInterest"></span>
+            </label>
+            <label class="col-md-4">
+              <h6>Total Balance</h6> <span id="finalTotalBalance"></span>
+            </label>
+
+          </div>
+          <hr style="margin-top: 5px;">
           <canvas id="compoundInterestChart" width="400" height="325"></canvas>
+
+          <div>
+
+          </div>
         </div>
       </div>
     </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
-
 
   <script>
     var compoundInterestChart;
@@ -238,10 +281,9 @@
 
       initialPrincipleValue = +$('#initialPrinciple').val();
       depositsValue = +$('#deposits').val();
-      console.log("DEPOSITSVALUE", depositsValue)
 
-      monthlyDepositRadio = $('#monthlyDepositRadio').is(':checked');
-      annualDepositRadio = $('#annualDepositRadio').is(':checked');
+      // monthlyDepositRadio = $('#monthlyDepositRadio').is(':checked');
+      // annualDepositRadio = $('#annualDepositRadio').is(':checked');
 
       interestRatePercentageValue = +$('#interestRatePercentage').val();
       numberOfYearsValue = +$('#numberOfYears').val();
@@ -272,81 +314,130 @@
       // var futureValue = initialPrinciple;
 
       // Future Value
-      var initialPrinciple = initialPrincipleValue;
-      var deposit = depositsValue;
-      var annualRate = interestRatePercentageValue;
-      var monthlyRate = annualRate / 12 / 100;
-      var dailyRate = annualRate / 365 / 100;
-      var numberOfYears = numberOfYearsValue;
-      var months = numberOfYears * 12;
-      var futureValue = initialPrinciple;
+      var initialPrinciple = +initialPrincipleValue;
+      var deposit = +depositsValue;
+      var annualRate = +interestRatePercentageValue;
+      var monthlyRate = +annualRate / 12 / 100;
+      var dailyRate = +annualRate / 365 / 100;
+      var numberOfYears = +numberOfYearsValue;
+      var months = +numberOfYears * 12;
+      var futureValue = +initialPrinciple;
       var compoundFrequency = 0;
       var rate = 0.00;
 
       // compound frequency and rate
       if (dailyCompoundRadio) {
-        rate = dailyRate;
-        compoundFrequency = numberOfYears * 365;
+        rate = +dailyRate;
+        compoundFrequency = +numberOfYears * 365;
       } else if (monthlyCompoundRadio) {
-        rate = monthlyRate;
-        compoundFrequency = numberOfYears * 12;
+        rate = +monthlyRate;
+        compoundFrequency = +numberOfYears * 12;
       } else if (annualCompoundRadio) {
-        rate = annualRate;
-        compoundFrequency = numberOfYears;
+        rate = +annualRate;
+        compoundFrequency = +numberOfYears;
       }
 
       for (i = 1; i <= +compoundFrequency; i++) {
 
+        // // if daily compounded, must change deposit according to whether it's monthly or annually
+        // if (dailyCompoundRadio) {
+        //   // if monthly
+        //   if (monthlyDepositRadio) {
+        //     // every 30 days make a deposit
+        //     if (i % 30 == 0) {
+        //       depsoit = +depositsValue;
+        //       totalDepositsValue += +depositsValue;
+        //       console.log(totalDepositsValue)
+
+        //       // else don't
+        //     } else {
+        //       deposit = 0;
+        //     }
+        //     // if annually
+        //   } else if (annualDepositRadio) {
+        //     // every year make a deposit
+        //     if (i % 365 == 0) {
+        //       depsoit = +depositsValue;
+        //       totalDepositsValue += +depositsValue;
+
+        //       // else don't
+        //     } else {
+        //       deposit = 0;
+        //     }
+        //   }
+        // } else if (annualCompoundRadio) {
+        //   // if monthly
+        //   if (monthlyDepositRadio) {
+        //     // every 30 days make a deposit
+        //     if (i % 30 == 0) {
+        //       depsoit = +depositsValue * 12;
+        //       totalDepositsValue += +depositsValue * 12;
+        //       console.log(totalDepositsValue)
+
+        //       // else don't
+        //     } else {
+        //       deposit = 0;
+        //     }
+        //     // if annually
+        //   } else if (annualDepositRadio) {
+
+        //     depsoit = +depositsValue;
+        //     totalDepositsValue += +depositsValue;
+
+        //   }
+
+        // } else {
+        //   totalDepositsValue += +depositsValue;
+        // }
+
         // if daily compounded, must change deposit according to whether it's monthly or annually
         if (dailyCompoundRadio) {
-          // if monthly
-          if (monthlyDepositRadio) {
-            // every 30 days make a deposit
-            if (i % 30 == 0) {
-              depsoit = +depositsValue;
-              totalDepositsValue += +depositsValue;
-              console.log(totalDepositsValue)
 
-              // else don't
-            } else {
-              deposit = 0;
-            }
-            // if annually
-          } else if (annualDepositRadio) {
-            // every year make a deposit
-            if (i % 365 == 0) {
-              depsoit = +depositsValue;
-              totalDepositsValue += +depositsValue;
+          // every 30 days make a deposit
+          if (i % 30 == 0) {
+            depsoit = +depositsValue;
+            totalDepositsValue += +depositsValue;
+            futureValue = (futureValue + deposit) * (1 + +rate);
 
-              // else don't
-            } else {
-              deposit = 0;
-            }
+            // console.log(+totalDepositsValue)
+            // else don't
+          } else {
+            deposit = 0;
           }
+
+        } else if (annualCompoundRadio) {
+
+          depsoit = +depositsValue * 12;
+          totalDepositsValue += +depositsValue * 12;
+          futureValue = (futureValue + deposit) * (1 + +rate);
+
+          // console.log(+totalDepositsValue)
+
         } else {
-              totalDepositsValue += +depositsValue;
+          totalDepositsValue += +depositsValue;
+          futureValue = (futureValue + deposit) * (1 + +rate);
+
         }
 
-        futureValue = (futureValue + deposit) * (1 + rate);
-        console.log(futureValue)
+        console.log("futureValue", futureValue)
 
-        // compound frequency and rate
+
         if (dailyCompoundRadio) {
           if (i % 365 == 0) {
-            totalInterestValue = futureValue - totalDepositsValue;
-            yearlyTotalInterest.push(totalInterestValue);
-            yearlyTotalDeposits.push(totalDepositsValue + initialPrinciple);
+            totalInterestValue = +futureValue - +totalDepositsValue - +initialPrinciple;
+            yearlyTotalInterest.push(+totalInterestValue);
+            yearlyTotalDeposits.push(+totalDepositsValue + +initialPrinciple);
           }
         } else if (monthlyCompoundRadio) {
           if (i % 12 == 0) {
-            totalInterestValue = futureValue - totalDepositsValue;
-            yearlyTotalInterest.push(totalInterestValue);
-            yearlyTotalDeposits.push(totalDepositsValue + initialPrinciple);
+            totalInterestValue = +futureValue - +totalDepositsValue - +initialPrinciple;
+            yearlyTotalInterest.push(+totalInterestValue);
+            yearlyTotalDeposits.push(+totalDepositsValue + +initialPrinciple);
           }
         } else if (annualCompoundRadio) {
-            totalInterestValue = futureValue - totalDepositsValue;
-            yearlyTotalInterest.push(totalInterestValue);
-            yearlyTotalDeposits.push(totalDepositsValue + initialPrinciple);
+          totalInterestValue = +futureValue - +totalDepositsValue - +initialPrinciple;
+          yearlyTotalInterest.push(+totalInterestValue);
+          yearlyTotalDeposits.push(+totalDepositsValue + +initialPrinciple);
         }
 
       }
@@ -356,24 +447,21 @@
       for (let i = 1; i <= numberOfYears; i++) {
         years.push(currentYear + i);
       }
-      console.log(years)
-      console.log(futureValue)
-      console.log(yearlyTotalDeposits)
 
-      if (window.compoundInterestChart) {
-        window.compoundInterestChart.destroy();
-      }
+      $('#finalTotalDeposits').text(formatter.format(totalDepositsValue))
+      $('#finalTotalInterest').text(formatter.format(totalInterestValue))
+      $('#finalTotalBalance').text(formatter.format(totalDepositsValue + totalInterestValue))
+
 
       updateChart();
     }
 
 
-
-
-
-
     function updateChart() {
 
+      if (window.compoundInterestChart) {
+        window.compoundInterestChart.destroy();
+      }
       var ctx = document.getElementById("compoundInterestChart");
       window.compoundInterestChart = new Chart(ctx, {
         type: "bar",
@@ -391,10 +479,10 @@
           {
             label: "Total Interest",
             data: yearlyTotalInterest,
-            backgroundColor: 
+            backgroundColor:
               "rgba(46,139,87, .4)",
 
-            borderColor: 
+            borderColor:
               "rgba(46,139,87, 1)",
 
             borderWidth: 1
