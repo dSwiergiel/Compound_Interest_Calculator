@@ -36,7 +36,9 @@
         max-width: 1000px;
         margin-top: 3vh;
       }
-
+      #adContainer {
+          overflow: hidden;
+        }
       label {
         color: #333!important;
       }
@@ -69,6 +71,10 @@
         text-align: center;
         padding-left: 5px;
         padding-right: 5px;
+      }
+
+      .card {
+        border-style: none;
       }
 
       .cardShadow {
@@ -107,24 +113,12 @@
           display: inline-block;
         } */
       }
-      @media(max-width: 499px){
+      /* @media(max-width: 499px){
         #adContainer {
           overflow: hidden;
         }
-        /* #adContainer {
-          margin-top: 2vh;
-        }
 
-        #adContainer.card .card-body{
-          padding: 0px;
-        }
-        #adContainer.card {
-          padding: 0px;
-          background-color: transparent;
-          box-shadow: none;
-          border: none;
-        } */
-      }
+      } */
     </style>
 </head>
 
@@ -272,9 +266,9 @@
           <canvas id="compoundInterestChart" width="400" height="325"></canvas>
 
           <div class="smallScreenTotalOutput">
-            <hr >
+            <hr>
             <div class="row">
-              
+
               <label class="col-md-4">
                 <h6 class="smallScreenTotalOutput">Total Deposits:</h6> <span class="finalTotalDeposits"></span>
               </label>
@@ -284,7 +278,7 @@
               <label class="col-md-4">
                 <h6 class="smallScreenTotalOutput">Total Balance:</h6> <span class="finalTotalBalance"></span>
               </label>
-  
+
             </div>
             <hr style="margin-top: 5px; ">
           </div>
@@ -309,31 +303,27 @@
         (adsbygoogle = window.adsbygoogle || []).push({});
       </script> -->
 
-      <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9823825251368211" data-ad-slot="3107217752"
-        data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <ins id="largeScreenAd" class="adsbygoogle " style="display:block;" data-ad-client="ca-pub-9823825251368211"
+        data-ad-slot="3107217752" data-ad-format="auto" data-full-width-responsive="true"></ins>
       <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
-      </script> -->
+      </script>
+
 
 
       <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-9823825251368211"
-     data-ad-slot="8237137381"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+      <ins id="smallScreenAd" class="adsbygoogle " style="display:block; text-align:center;" data-ad-layout="in-article"
+        data-ad-format="fluid" data-ad-client="ca-pub-9823825251368211" data-ad-slot="8237137381"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
     </div>
 
   </div>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
   <script>
-
     var compoundInterestChart;
 
     var years = [];
@@ -361,16 +351,20 @@
 
 
     $(document).ready(function () {
+      // check if smallScreenTotalOutput class is applied
+      // if it is, small screen size breakpoint has been meet and thus, show or hide ads depending.
+      checkSize();
 
-      calculateFutureValue();
-      var inMouseDown = false;
-
-
+      // run test on resize of the window
+      $(window).resize(checkSize);
       $('input').on('change', function () {
         calculateFutureValue();
       });
+      calculateFutureValue();
+      var inMouseDown = false;
 
-      var i = 0, timeOut = 0;
+      var i = 0,
+        timeOut = 0;
       var inputID
       var currentVal
       var step
@@ -408,6 +402,16 @@
         clearInterval(timeOut);
       });
     });
+
+    function checkSize() {
+      if ($(".smallScreenTotalOutput").css("display") == "none") {
+        $('#smallScreenAd').hide();
+        $('#largeScreenAd').show();
+      } else {
+        $('#smallScreenAd').show();
+        $('#largeScreenAd').hide();
+      }
+    }
 
     // for when the user clicks once on the plus or minus buttons 
     $('button[name = "+"], button[name = "-"]').on('click', function (e) {
@@ -563,8 +567,7 @@
         type: "bar",
         data: {
           labels: years,
-          datasets: [
-            {
+          datasets: [{
               label: "Total Deposits",
               data: yearlyTotalDeposits,
               // backgroundColor: "rgba(141, 13, 38,1.0)",
@@ -633,7 +636,6 @@
         }
       });
     }
-
   </script>
 </body>
 
