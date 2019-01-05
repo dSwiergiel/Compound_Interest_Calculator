@@ -108,19 +108,22 @@
         } */
       }
       @media(max-width: 499px){
-        #addContainer {
+        #adContainer {
+          overflow: hidden;
+        }
+        /* #adContainer {
           margin-top: 2vh;
         }
 
-        #addContainer.card .card-body{
+        #adContainer.card .card-body{
           padding: 0px;
         }
-        #addContainer.card {
+        #adContainer.card {
           padding: 0px;
           background-color: transparent;
           box-shadow: none;
           border: none;
-        }
+        } */
       }
     </style>
 </head>
@@ -244,7 +247,7 @@
               <label class="custom-control-label" for="annualCompoundRadio">Annually</label>
             </div> -->
           </div>
-          
+
           <hr class="largeScreenTotalOutput">
 
         </div>
@@ -295,7 +298,7 @@
   </div>
 
 
-  <div id="addContainer" class="card cardShadow mt-2 mb-2">
+  <div id="adContainer" class="card cardShadow mt-2 mb-2">
 
     <div class="card-body">
 
@@ -306,12 +309,24 @@
         (adsbygoogle = window.adsbygoogle || []).push({});
       </script> -->
 
-      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
       <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9823825251368211" data-ad-slot="3107217752"
         data-ad-format="auto" data-full-width-responsive="true"></ins>
       <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
+      </script> -->
+
+
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9823825251368211"
+     data-ad-slot="8237137381"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
     </div>
 
   </div>
@@ -552,19 +567,25 @@
             {
               label: "Total Deposits",
               data: yearlyTotalDeposits,
-              backgroundColor: "rgba(54, 162, 235, 0.4)",
-              borderColor: "rgba(54, 162, 235, 1)",
+              // backgroundColor: "rgba(141, 13, 38,1.0)",
+              // borderColor: "rgba(220, 221, 225,1.0)",
+              backgroundColor: "rgba(113, 128, 147,.5)",
+              borderColor: "rgba(113, 128, 147,0)",
+
 
               borderWidth: 1
             },
             {
               label: "Total Interest",
               data: yearlyTotalInterest,
-              backgroundColor:
-                "rgba(46,139,87, .4)",
-
-              borderColor:
-                "rgba(46,139,87, 1)",
+              // backgroundColor: "rgba(220, 221, 225,1.0)",
+              // borderColor: "rgba(220, 221, 225,1.0)",
+              backgroundColor: "rgba(113, 10, 30,.9)",
+              borderColor: "rgba(141, 13, 38,0)",
+              // backgroundColor: "rgba(53, 59, 72,1.0)",
+              // borderColor: "rgba(39, 60, 117,1.0)",
+              // backgroundColor: "rgba(189, 195, 199,1.0)",
+              // borderColor: "rgba(189, 195, 199,1.0)",
 
               borderWidth: 1
             }
