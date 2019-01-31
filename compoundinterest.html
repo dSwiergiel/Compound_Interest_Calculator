@@ -231,15 +231,15 @@
               <input type="radio" id="dailyCompoundRadio" name="compoundFrequencyRadio" class="custom-control-input" />
               <label class="custom-control-label" for="dailyCompoundRadio">Daily</label>
             </div> -->
-            <div class="custom-control custom-radio d-inline-block">
+            <div class="custom-control custom-radio d-inline-block mr-2">
               <input type="radio" id="monthlyCompoundRadio" name="compoundFrequencyRadio" class="custom-control-input"
                 checked="" />
               <label class="custom-control-label" for="monthlyCompoundRadio">Monthly</label>
             </div>
-            <!-- <div class="custom-control custom-radio d-inline-block">
+            <div class="custom-control custom-radio d-inline-block">
               <input type="radio" id="annualCompoundRadio" name="compoundFrequencyRadio" class="custom-control-input" />
               <label class="custom-control-label" for="annualCompoundRadio">Annually</label>
-            </div> -->
+            </div>
           </div>
 
           <hr class="largeScreenTotalOutput">
@@ -485,7 +485,7 @@
         rate = +monthlyRate;
         compoundFrequency = +numberOfYears * 12;
       } else if (annualCompoundRadio) {
-        rate = +annualRate;
+        rate = +annualRate / 100;
         compoundFrequency = +numberOfYears;
       }
 
@@ -496,7 +496,7 @@
 
           // every 30 days make a deposit
           if (i % 30 == 0) {
-            depsoit = +depositsValue;
+            // depsoit = +depositsValue;
             totalDepositsValue += +depositsValue;
             futureValue = (futureValue + deposit) * (1 + +rate);
 
@@ -508,11 +508,9 @@
 
         } else if (annualCompoundRadio) {
 
-          depsoit = +depositsValue * 12;
-          totalDepositsValue += +depositsValue * 12;
-          futureValue = (futureValue + deposit) * (1 + +rate);
-
-          // console.log(+totalDepositsValue)
+          // deposit = +depositsValue * 12;
+          totalDepositsValue += +depositsValue*12;
+          futureValue = (futureValue + deposit*12) * (1 + +rate);
 
         } else {
           totalDepositsValue += +depositsValue;
@@ -551,7 +549,7 @@
 
       $('.finalTotalDeposits').text(formatter.format(totalDepositsValue + initialPrinciple))
       $('.finalTotalInterest').text(formatter.format(totalInterestValue))
-      $('.finalTotalBalance').text(formatter.format(totalDepositsValue + totalInterestValue))
+      $('.finalTotalBalance').text(formatter.format(totalDepositsValue + totalInterestValue + initialPrinciple))
 
       updateChart();
     }
@@ -573,7 +571,7 @@
               // backgroundColor: "rgba(141, 13, 38,1.0)",
               // borderColor: "rgba(220, 221, 225,1.0)",
               backgroundColor: "rgba(113, 128, 147,.5)",
-              borderColor: "rgba(113, 128, 147,0)",
+              borderColor: "rgba(113, 128, 147,1)",
 
 
               borderWidth: 1
@@ -583,8 +581,8 @@
               data: yearlyTotalInterest,
               // backgroundColor: "rgba(220, 221, 225,1.0)",
               // borderColor: "rgba(220, 221, 225,1.0)",
-              backgroundColor: "rgba(113, 10, 30,.9)",
-              borderColor: "rgba(141, 13, 38,0)",
+              backgroundColor: "rgba(0, 50, 100,.7)",
+              borderColor: "rgba(0, 75, 150,1)",
               // backgroundColor: "rgba(53, 59, 72,1.0)",
               // borderColor: "rgba(39, 60, 117,1.0)",
               // backgroundColor: "rgba(189, 195, 199,1.0)",
