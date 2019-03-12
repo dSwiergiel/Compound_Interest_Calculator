@@ -1,26 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <meta name="keywords" content="Deven Swiergiel, Devin Swiergiel, Devin Sweirgile, Devon Sweirgiel, Devon Swiergiel, Devin Sweirgiel, Deven, Swiergiel, deven swiergile, devin, devon, deven swiergel, 
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta
+      name="keywords"
+      content="Deven Swiergiel, Devin Swiergiel, Devin Sweirgile, Devon Sweirgiel, Devon Swiergiel, Devin Sweirgiel, Deven, Swiergiel, deven swiergile, devin, devon, deven swiergel, 
   swiergel, swiergile, compound interest, compound, interest, compound interest calculator, interest calculator, scotia, ny, ualbany, University at Albany, albany, albany ny, devenswiergiel.com, devin swiergiel, Personal Website, Mobile, Responsive, Bootstrap,  
     Smartphone Compatible, web, unit calculator, compound interest estimator, exponential, 
      invesments,  investor, investor calculator,
-    retierment calculator, retirement, retirement calculator, rental, holding, property. albert Einstein, Compound interest is the eighth wonder of the world, he who under stands it, earns it, he who doesn't, pays it, albert Einstein compound interest quote, albert Einstein quote" />
-  <title>Compound Interest Calculator</title>
-  <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
-    crossorigin="anonymous" />
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet" />
-  <style>
-    body {
+    retierment calculator, retirement, retirement calculator, rental, holding, property. albert Einstein, Compound interest is the eighth wonder of the world, he who under stands it, earns it, he who doesn't, pays it, albert Einstein compound interest quote, albert Einstein quote"
+    />
+    <meta
+      name="description"
+      content="Albert Einstein once said compound interest is the 8th wonder of the world. He who understands it, earns it. he who doesn't, pays it. Albert wasn't wrong. Discover the power of compound interest!"
+    />
+    <title>Compound Interest Calculator</title>
+    <link
+      rel="stylesheet"
+      href="https://bootswatch.com/4/lux/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300"
+      rel="stylesheet"
+    />
+    <style>
+      body {
         background-color: #eee;
         letter-spacing: 2px;
       }
-      .header{
+      .header {
         font-weight: 200;
       }
 
@@ -37,17 +53,15 @@
         margin-top: 3vh;
       }
       #adContainer {
-          overflow: hidden;
-        }
+        overflow: hidden;
+      }
       label {
-        color: #333!important;
+        color: #333 !important;
       }
 
       .finalTotals {
-        
         font-weight: bold;
         font-size: 1.06rem;
-
       }
       h6,
       h5,
@@ -63,8 +77,15 @@
         position: relative;
         letter-spacing: 5px;
         text-rendering: optimizelegibility;
-        
+
         vertical-align: baseline;
+      }
+      h1{
+        letter-spacing: 5px;
+        color: rgb(92, 92, 92);
+      }
+      h6{
+        color: #333;
       }
 
       .form-control {
@@ -81,36 +102,52 @@
         box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
       }
 
-      .smallScreenTotalOutput{
-          display: none;
-          visibility: hidden;
-        }
+      .smallScreenTotalOutput {
+        display: none;
+        visibility: hidden;
+      }
+
+      .fa-heart{
+        color: rgba(255, 0, 0, 0.671);
+      }
+
+      footer {
+        padding: 6px 0px 10px 10px;
+        /* background: #fff; */
+      }
       @media (max-width: 800px) {
         .container {
           max-width: 900px;
           margin-top: 2vh;
         }
-        body, p{
-        letter-spacing: .5px;
-      }
-        h1  {
+        body,
+        p {
+          letter-spacing: 0.5px;
+        }
+        h1 {
           font-size: 1.3rem;
         }
         h5 {
-          font-size: .9rem;
+          font-size: 0.9rem;
         }
       }
-      @media(max-width: 575px){
-        .largeScreenTotalOutput{
+      @media (max-width: 575px) {
+        .largeScreenTotalOutput {
           display: none;
           visibility: hidden;
         }
         .lessHrBM {
           margin-bottom: 0px;
         }
-        .smallScreenTotalOutput{
+        .lessHrTM {
+          margin-top: 0px;
+        }
+        .smallScreenTotalOutput {
           display: inline-block;
           visibility: visible;
+        }
+        footer{
+          margin-bottom: 48px;
         }
         /* h6 {
           display: inline-block;
@@ -123,65 +160,104 @@
 
       } */
     </style>
-</head>
+  </head>
 
-<body class="container">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
 
-  <div class="card cardShadow">
-    <div class="card-body">
-      <h1 class=" text-center mb-3 header">
-        Compound Interest Calculator
-      </h1>
-      <h5 class="quote card-subtitle ">
-        “Compound interest is the eighth wonder of the world. <br />He who
-        understands it, earns it. he who doesn't, pays it.”
-        <h6 class="card-subtitle mt-2 mb-2 text-center text-muted quote">
-          ~ Albert Einstein
-        </h6>
-      </h5>
-      <hr class="lessHrBM"/>
+    <div class="container">
+      <div class="card cardShadow">
+        <div class="card-body">
+          <h1 class=" text-center mb-3 header">
+            Compound Interest Calculator
+          </h1>
+          <h5 class="quote card-subtitle ">
+            “Compound interest is the eighth wonder of the world. <br />He who
+            understands it, earns it. he who doesn't, pays it.”
+            <h6 class="card-subtitle mt-2 mb-2 text-center quote">
+              ~ Albert Einstein
+            </h6>
+          </h5>
+          <hr class="lessHrBM" />
 
-      <div class="row">
-        <div class="col-sm-4 order-2 order-sm-4">
-          <div class="form-group">
-            <label for="initialPrinciple">Initial principle ($)</label>
-            <div class="input-group mb-4">
-              <div class="input-group-prepend">
-                <button class="btn btn-outline-secondary btn-sm" name="-" for="initialPrinciple" type="button">
-                  <i class="fas fa-minus"></i>
-                </button>
+          <div class="row">
+            <div class="col-sm-4 order-2 order-sm-4">
+              <div class="form-group">
+                <label for="initialPrinciple">Initial principle ($)</label>
+                <div class="input-group mb-4">
+                  <div class="input-group-prepend">
+                    <button
+                      class="btn btn-outline-secondary btn-sm"
+                      name="-"
+                      for="initialPrinciple"
+                      type="button"
+                    >
+                      <i class="fas fa-minus"></i>
+                    </button>
+                  </div>
+                  <input
+                    id="initialPrinciple"
+                    type="number"
+                    class="form-control"
+                    placeholder=""
+                    aria-label=""
+                    aria-describedby="basic-addon1"
+                    value="3000"
+                    step="100"
+                    min="0"
+                  />
+                  <div class="input-group-append">
+                    <button
+                      class="btn btn-outline-secondary btn-sm"
+                      name="+"
+                      for="initialPrinciple"
+                      type="button"
+                    >
+                      <i class="fas fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
+                <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
               </div>
-              <input id="initialPrinciple" type="number" class="form-control" placeholder="" aria-label=""
-                aria-describedby="basic-addon1" value="3000" step="100" min="0" />
-              <div class="input-group-append">
-                <button class="btn btn-outline-secondary btn-sm" name="+" for="initialPrinciple" type="button">
-                  <i class="fas fa-plus"></i>
-                </button>
-              </div>
-            </div>
-            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-          </div>
-          <div class="form-group mb-4">
-            <label for="deposits">Monthly contribution ($)</label>
+              <div class="form-group mb-4">
+                <label for="deposits">Monthly contribution ($)</label>
 
-            <div class="input-group ">
-              <div class="input-group-prepend">
-                <button class="btn btn-outline-secondary btn-sm" name="-" for="deposits" type="button">
-                  <i class="fas fa-minus"></i>
-                </button>
+                <div class="input-group ">
+                  <div class="input-group-prepend">
+                    <button
+                      class="btn btn-outline-secondary btn-sm"
+                      name="-"
+                      for="deposits"
+                      type="button"
+                    >
+                      <i class="fas fa-minus"></i>
+                    </button>
+                  </div>
+                  <input
+                    id="deposits"
+                    type="number"
+                    class="form-control"
+                    placeholder=""
+                    aria-label=""
+                    aria-describedby="basic-addon1"
+                    value="800"
+                    min="0"
+                    step="50"
+                  />
+                  <div class="input-group-append">
+                    <button
+                      class="btn btn-outline-secondary btn-sm"
+                      name="+"
+                      for="deposits"
+                      type="button"
+                    >
+                      <i class="fas fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
+                <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
               </div>
-              <input id="deposits" type="number" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"
-                value="800" min="0" step="50" />
-              <div class="input-group-append">
-                <button class="btn btn-outline-secondary btn-sm" name="+" for="deposits" type="button">
-                  <i class="fas fa-plus"></i>
-                </button>
-              </div>
-            </div>
-            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-          </div>
-          <!-- <div class="form-group mb-4">
+              <!-- <div class="form-group mb-4">
             <div class="custom-control custom-radio d-inline-block">
               <input type="radio" id="monthlyDepositRadio" name="depositFrequencyRadio" class="custom-control-input"
                 checked="" />
@@ -193,451 +269,532 @@
             </div>
           </div> -->
 
-          <div class="form-group mb-4">
-            <label for="interestRatePercentage">Rate (%)</label>
-            <div class="input-group ">
-              <div class="input-group-prepend">
-                <button class="btn btn-outline-secondary btn-sm" name="-" for="interestRatePercentage" type="button">
-                  <i class="fas fa-minus"></i>
-                </button>
+              <div class="form-group mb-4">
+                <label for="interestRatePercentage">Rate (%)</label>
+                <div class="input-group ">
+                  <div class="input-group-prepend">
+                    <button
+                      class="btn btn-outline-secondary btn-sm"
+                      name="-"
+                      for="interestRatePercentage"
+                      type="button"
+                    >
+                      <i class="fas fa-minus"></i>
+                    </button>
+                  </div>
+                  <input
+                    id="interestRatePercentage"
+                    type="number"
+                    class="form-control"
+                    placeholder=""
+                    aria-label=""
+                    aria-describedby="basic-addon1"
+                    value="7.25"
+                    step=".25"
+                    min="0"
+                  />
+                  <div class="input-group-append">
+                    <button
+                      class="btn btn-outline-secondary btn-sm"
+                      name="+"
+                      for="interestRatePercentage"
+                      type="button"
+                    >
+                      <i class="fas fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
+                <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
               </div>
-              <input id="interestRatePercentage" type="number" class="form-control" placeholder="" aria-label=""
-                aria-describedby="basic-addon1" value="9.75" step=".25" min="0" />
-              <div class="input-group-append">
-                <button class="btn btn-outline-secondary btn-sm" name="+" for="interestRatePercentage" type="button">
-                  <i class="fas fa-plus"></i>
-                </button>
+              <div class="form-group mb-4">
+                <label for="numberOfYears">Years</label>
+                <div class="input-group ">
+                  <div class="input-group-prepend">
+                    <button
+                      class="btn btn-outline-secondary btn-sm"
+                      name="-"
+                      for="numberOfYears"
+                      type="button"
+                    >
+                      <i class="fas fa-minus"></i>
+                    </button>
+                  </div>
+                  <input
+                    id="numberOfYears"
+                    type="number"
+                    class="form-control"
+                    placeholder=""
+                    aria-label=""
+                    aria-describedby="basic-addon1"
+                    value="30"
+                    min="1"
+                    step="1"
+                  />
+                  <div class="input-group-append">
+                    <button
+                      class="btn btn-outline-secondary btn-sm"
+                      name="+"
+                      for="numberOfYears"
+                      type="button"
+                    >
+                      <i class="fas fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
-            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-          </div>
-          <div class="form-group mb-4">
-            <label for="numberOfYears">Years</label>
-            <div class="input-group ">
-              <div class="input-group-prepend">
-                <button class="btn btn-outline-secondary btn-sm" name="-" for="numberOfYears" type="button">
-                  <i class="fas fa-minus"></i>
-                </button>
-              </div>
-              <input id="numberOfYears" type="number" class="form-control" placeholder="" aria-label=""
-                aria-describedby="basic-addon1" value="25" min="1" step="1" />
-              <div class="input-group-append">
-                <button class="btn btn-outline-secondary btn-sm" name="+" for="numberOfYears" type="button">
-                  <i class="fas fa-plus"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="form-group mb-0">
-            <label for="compoundFrequencyRadio">Compound frequency</label> <br />
-            <!-- <div class="custom-control custom-radio d-inline-block">
+              <div class="form-group mb-0">
+                <label for="compoundFrequencyRadio">Compound frequency</label>
+                <br />
+                <!-- <div class="custom-control custom-radio d-inline-block">
               <input type="radio" id="dailyCompoundRadio" name="compoundFrequencyRadio" class="custom-control-input" />
               <label class="custom-control-label" for="dailyCompoundRadio">Daily</label>
             </div> -->
-            <div class="custom-control custom-radio d-inline-block mr-2">
-              <input type="radio" id="monthlyCompoundRadio" name="compoundFrequencyRadio" class="custom-control-input"
-                checked="" />
-              <label class="custom-control-label" for="monthlyCompoundRadio">Monthly</label>
+                <div class="custom-control custom-radio d-inline-block mr-2">
+                  <input
+                    type="radio"
+                    id="monthlyCompoundRadio"
+                    name="compoundFrequencyRadio"
+                    class="custom-control-input"
+                    checked=""
+                  />
+                  <label class="custom-control-label" for="monthlyCompoundRadio"
+                    >Monthly</label
+                  >
+                </div>
+                <div class="custom-control custom-radio d-inline-block">
+                  <input
+                    type="radio"
+                    id="annualCompoundRadio"
+                    name="compoundFrequencyRadio"
+                    class="custom-control-input"
+                  />
+                  <label class="custom-control-label" for="annualCompoundRadio"
+                    >Annually</label
+                  >
+                </div>
+              </div>
+
+              
+
+              <hr class="largeScreenTotalOutput " />
+              
             </div>
-            <div class="custom-control custom-radio d-inline-block">
-              <input type="radio" id="annualCompoundRadio" name="compoundFrequencyRadio" class="custom-control-input" />
-              <label class="custom-control-label" for="annualCompoundRadio">Annually</label>
+            <div class="col-sm-8 order-1 order-sm-8">
+              <div class="largeScreenTotalOutput">
+                <div class="row">
+                  <label class="col-md-4">
+                    <h6>Total Deposits</h6>
+                    <span class="finalTotalDeposits"></span>
+                  </label>
+                  <label class="col-md-4">
+                    <h6>Total Interest</h6>
+                    <span class="finalTotalInterest"></span>
+                  </label>
+                  <label class="col-md-4">
+                    <h6>Total Balance</h6>
+                    <span class="finalTotalBalance"></span>
+                  </label>
+                </div>
+                <hr style="margin-top: 5px; margin-bottom: 0px;" />
+              </div>
+
+              <canvas
+                id="compoundInterestChart"
+                width="400"
+                height="325"
+              ></canvas>
+
+              <div class="smallScreenTotalOutput">
+                <hr class="lessHrTM"/>
+                <div class="row">
+                  <label class="col-md-4">
+                    <h6 class="smallScreenTotalOutput">Total Deposits:</h6>
+                    <span class="finalTotalDeposits"></span>
+                  </label>
+                  <label class="col-md-4">
+                    <h6 class="smallScreenTotalOutput">Total Interest:</h6>
+                    <span class="finalTotalInterest"></span>
+                  </label>
+                  <label class="col-md-4">
+                    <h6 class="smallScreenTotalOutput">Total Balance:</h6>
+                    <span class="finalTotalBalance"></span>
+                  </label>
+                </div>
+                <hr style="margin-top: 5px; " />
+              </div>
+
+              
             </div>
-          </div>
-
-          <hr class="largeScreenTotalOutput">
-
-        </div>
-        <div class="col-sm-8 order-1 order-sm-8">
-
-
-          <div class="largeScreenTotalOutput">
-            <div class="row">
-              <label class="col-md-4">
-                <h6>Total Deposits</h6> <span class="finalTotalDeposits"></span>
-              </label>
-              <label class="col-md-4">
-                <h6>Total Interest</h6> <span class="finalTotalInterest"></span>
-              </label>
-              <label class="col-md-4">
-                <h6>Total Balance</h6> <span class="finalTotalBalance"></span>
-              </label>
-            </div>
-            <hr style="margin-top: 5px; margin-bottom: 0px;">
-          </div>
-
-          <canvas id="compoundInterestChart" width="400" height="325"></canvas>
-
-          <div class="smallScreenTotalOutput">
-            <hr>
-            <div class="row">
-
-              <label class="col-md-4">
-                <h6 class="smallScreenTotalOutput">Total Deposits:</h6> <span class="finalTotalDeposits"></span>
-              </label>
-              <label class="col-md-4">
-                <h6 class="smallScreenTotalOutput">Total Interest:</h6> <span class="finalTotalInterest"></span>
-              </label>
-              <label class="col-md-4">
-                <h6 class="smallScreenTotalOutput">Total Balance:</h6> <span class="finalTotalBalance"></span>
-              </label>
-
-            </div>
-            <hr style="margin-top: 5px; ">
-          </div>
-
-          <div>
-
           </div>
         </div>
       </div>
-    </div>
-  </div>
 
-
-  <div id="adContainer" class="card cardShadow mt-2 mb-2">
-
-    <div class="card-body">
-
-      <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <div id="adContainer" class="card cardShadow mt-2 mb-2">
+        <div class="card-body">
+          <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
       <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid"
         data-ad-client="ca-pub-9823825251368211" data-ad-slot="4140387387"></ins>
       <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
       </script> -->
 
-      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-      <ins id="largeScreenAd" class="adsbygoogle " style="display:block;" data-ad-client="ca-pub-9823825251368211"
-        data-ad-slot="3107217752" data-ad-format="auto" data-full-width-responsive="true"></ins>
-      <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
+          <script
+            async
+            src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+          ></script>
+          <ins
+            id="largeScreenAd"
+            class="adsbygoogle "
+            style="display:block;"
+            data-ad-client="ca-pub-9823825251368211"
+            data-ad-slot="3107217752"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          ></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
 
+          <script
+            async
+            src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+          ></script>
+          <ins
+            id="smallScreenAd"
+            class="adsbygoogle "
+            style="display:block; text-align:center;"
+            data-ad-layout="in-article"
+            data-ad-format="fluid"
+            data-ad-client="ca-pub-9823825251368211"
+            data-ad-slot="8237137381"
+          ></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </div>
 
-
-      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-      <ins id="smallScreenAd" class="adsbygoogle " style="display:block; text-align:center;" data-ad-layout="in-article"
-        data-ad-format="fluid" data-ad-client="ca-pub-9823825251368211" data-ad-slot="8237137381"></ins>
-      <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
+      <footer >
+          Made with <i class="fas fa-heart"></i> | <a href="http://devenswiergiel.com" target="_blank">Deven Swiergiel</a>
+          </footer>
     </div>
 
-  </div>
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
-  <script>
-    var compoundInterestChart;
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
 
-    var years = [];
-    var yearlyTotalDeposits = [];
-    var yearlyTotalInterest = [];
+    
+<!-- Go to www.addthis.com/dashboard to customize your tools --> <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c66d7e579842857"></script>
+    <script>
+      var compoundInterestChart;
 
-    var initialPrincipleValue
-    var depositsValue
+      var years = [];
+      var yearlyTotalDeposits = [];
+      var yearlyTotalInterest = [];
 
-    var monthlyDepositRadio
-    var annualDepositRadio
+      var initialPrincipleValue;
+      var depositsValue;
 
-    var interestRatePercentageValue
-    var numberOfYearsValue
+      var monthlyDepositRadio;
+      var annualDepositRadio;
 
-    var dailyCompoundRadio
-    var monthlyCompoundRadio
-    var annualCompoundRadio
+      var interestRatePercentageValue;
+      var numberOfYearsValue;
 
-    const formatter = new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      minimumFractionDigits: 0
-    })
+      var dailyCompoundRadio;
+      var monthlyCompoundRadio;
+      var annualCompoundRadio;
 
-
-    $(document).ready(function () {
-      // check if smallScreenTotalOutput class is applied
-      // if it is, small screen size breakpoint has been meet and thus, show or hide ads depending.
-      checkSize();
-
-      // run test on resize of the window
-      $(window).resize(checkSize);
-      $('input').on('change', function () {
-        calculateFutureValue();
+      const formatter = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+        minimumFractionDigits: 0
       });
-      calculateFutureValue();
-      var inMouseDown = false;
 
-      var i = 0,
-        timeOut = 0;
-      var inputID
-      var currentVal
-      var step
-      var minVal
-      var plusOrMinus
+      $(document).ready(function() {
+        // check if smallScreenTotalOutput class is applied
+        // if it is, small screen size breakpoint has been meet and thus, show or hide ads depending.
+        checkSize();
 
-      // for when the user holds down the plus or minus buttons 
-      $('button[name = "+"], button[name = "-"]').on('mousedown touchstart', function (e) {
-
-        inputID = $(this).attr('for');
-        currentVal = parseFloat($('input[id=' + inputID + ']').val());
-        step = parseFloat($('input[id=' + inputID + ']').attr('step'));
-        minVal = parseFloat($('input[id=' + inputID + ']').attr('min'));
-        plusOrMinus = $(this).attr('name');
-
-        timeOut = setInterval(function () {
-          inMouseDown = true;
-
-          if (plusOrMinus == "+") {
-            $('input[id=' + inputID + ']').val(currentVal += step);
-          } else if (plusOrMinus == "-") {
-            if (currentVal - step >= minVal) {
-              $('input[id=' + inputID + ']').val(currentVal -= step);
-            }
-          }
-        }, 150)
-      }).bind('mouseup mouseleave touchend', function () {
-
-
-        if (inMouseDown) {
+        // run test on resize of the window
+        $(window).resize(checkSize);
+        $("input").on("change", function() {
           calculateFutureValue();
-        }
+        });
+        calculateFutureValue();
+        var inMouseDown = false;
 
-        inMouseDown = false;
-        clearInterval(timeOut);
-      });
-    });
+        var i = 0,
+          timeOut = 0;
+        var inputID;
+        var currentVal;
+        var step;
+        var minVal;
+        var plusOrMinus;
 
-    function checkSize() {
-      if ($(".smallScreenTotalOutput").css("display") == "none") {
-        $('#smallScreenAd').hide();
-        $('#largeScreenAd').show();
-      } else {
-        $('#smallScreenAd').show();
-        $('#largeScreenAd').hide();
-      }
-    }
+        // for when the user holds down the plus or minus buttons
+        $('button[name = "+"], button[name = "-"]')
+          .on("mousedown touchstart", function(e) {
+            inputID = $(this).attr("for");
+            currentVal = parseFloat($("input[id=" + inputID + "]").val());
+            step = parseFloat($("input[id=" + inputID + "]").attr("step"));
+            minVal = parseFloat($("input[id=" + inputID + "]").attr("min"));
+            plusOrMinus = $(this).attr("name");
 
-    // for when the user clicks once on the plus or minus buttons 
-    $('button[name = "+"], button[name = "-"]').on('click', function (e) {
+            timeOut = setInterval(function() {
+              inMouseDown = true;
 
-      inputID = $(this).attr('for');
-      currentVal = parseFloat($('input[id=' + inputID + ']').val());
-      step = parseFloat($('input[id=' + inputID + ']').attr('step'));
-      minVal = parseFloat($('input[id=' + inputID + ']').attr('min'));
-      plusOrMinus = $(this).attr('name');
-
-      if (plusOrMinus == "+") {
-        $('input[id=' + inputID + ']').val(currentVal + step);
-      } else if (plusOrMinus == "-") {
-        if (currentVal - step >= minVal) {
-          $('input[id=' + inputID + ']').val(currentVal - step);
-        }
-      }
-
-      calculateFutureValue();
-    });
-
-    function calculateFutureValue() {
-      years = [];
-      yearlyTotalDeposits = [];
-      yearlyTotalInterest = [];
-
-      let totalDepositsValue = 0;
-      let totalInterestValue = 0;
-
-      initialPrincipleValue = +$('#initialPrinciple').val();
-      depositsValue = +$('#deposits').val();
-
-      // monthlyDepositRadio = $('#monthlyDepositRadio').is(':checked');
-      // annualDepositRadio = $('#annualDepositRadio').is(':checked');
-
-      interestRatePercentageValue = +$('#interestRatePercentage').val();
-      numberOfYearsValue = +$('#numberOfYears').val();
-
-      dailyCompoundRadio = $('#dailyCompoundRadio').is(':checked');
-      monthlyCompoundRadio = $('#monthlyCompoundRadio').is(':checked');
-      annualCompoundRadio = $('#annualCompoundRadio').is(':checked');
-
-
-      // console.log("initialPrincipleValue", initialPrincipleValue);
-      // console.log("depositsValue", depositsValue);
-      // console.log("monthlyDepositRadio", monthlyDepositRadio);
-      // console.log("annualDepositRadio", annualDepositRadio);
-      // console.log("interestRatePercentageValue", interestRatePercentageValue);
-      // console.log("numberOfYearsValue", numberOfYearsValue);
-      // console.log("dailyCompoundRadio", dailyCompoundRadio);
-      // console.log("monthlyCompoundRadio", monthlyCompoundRadio);
-      // console.log("annualCompoundRadio", annualCompoundRadio);
-
-      // Future Value
-      var initialPrinciple = +initialPrincipleValue;
-      var deposit = +depositsValue;
-      var annualRate = +interestRatePercentageValue;
-      var monthlyRate = +annualRate / 12 / 100;
-      var dailyRate = +annualRate / 365 / 100;
-      var numberOfYears = +numberOfYearsValue;
-      var months = +numberOfYears * 12;
-      var futureValue = +initialPrinciple;
-      var compoundFrequency = 0;
-      var rate = 0.00;
-
-      // compound frequency and rate
-      if (dailyCompoundRadio) {
-        rate = +dailyRate;
-        compoundFrequency = +numberOfYears * 365;
-      } else if (monthlyCompoundRadio) {
-        rate = +monthlyRate;
-        compoundFrequency = +numberOfYears * 12;
-      } else if (annualCompoundRadio) {
-        rate = +annualRate / 100;
-        compoundFrequency = +numberOfYears;
-      }
-
-      for (i = 1; i <= +compoundFrequency; i++) {
-
-        // if daily compounded, must change deposit according to whether it's monthly or annually
-        if (dailyCompoundRadio) {
-
-          // every 30 days make a deposit
-          if (i % 30 == 0) {
-            // depsoit = +depositsValue;
-            totalDepositsValue += +depositsValue;
-            futureValue = (futureValue + deposit) * (1 + +rate);
-
-            // console.log(+totalDepositsValue)
-            // else don't
-          } else {
-            deposit = 0;
-          }
-
-        } else if (annualCompoundRadio) {
-
-          // deposit = +depositsValue * 12;
-          totalDepositsValue += +depositsValue*12;
-          futureValue = (futureValue + deposit*12) * (1 + +rate);
-
-        } else {
-          totalDepositsValue += +depositsValue;
-          futureValue = (futureValue + deposit) * (1 + +rate);
-
-        }
-
-        // console.log("futureValue", futureValue)
-
-
-        if (dailyCompoundRadio) {
-          if (i % 365 == 0) {
-            totalInterestValue = +futureValue - +totalDepositsValue - +initialPrinciple;
-            yearlyTotalInterest.push(+totalInterestValue);
-            yearlyTotalDeposits.push(+totalDepositsValue + +initialPrinciple);
-          }
-        } else if (monthlyCompoundRadio) {
-          if (i % 12 == 0) {
-            totalInterestValue = +futureValue - +totalDepositsValue - +initialPrinciple;
-            yearlyTotalInterest.push(+totalInterestValue);
-            yearlyTotalDeposits.push(+totalDepositsValue + +initialPrinciple);
-          }
-        } else if (annualCompoundRadio) {
-          totalInterestValue = +futureValue - +totalDepositsValue - +initialPrinciple;
-          yearlyTotalInterest.push(+totalInterestValue);
-          yearlyTotalDeposits.push(+totalDepositsValue + +initialPrinciple);
-        }
-
-      }
-
-      var currentYear = (new Date()).getFullYear();
-
-      for (let i = 1; i <= numberOfYears; i++) {
-        years.push(currentYear + i);
-      }
-
-      $('.finalTotalDeposits').text(formatter.format(totalDepositsValue + initialPrinciple))
-      $('.finalTotalInterest').text(formatter.format(totalInterestValue))
-      $('.finalTotalBalance').text(formatter.format(totalDepositsValue + totalInterestValue + initialPrinciple))
-
-      updateChart();
-    }
-
-
-    function updateChart() {
-
-      if (window.compoundInterestChart) {
-        window.compoundInterestChart.destroy();
-      }
-      var ctx = document.getElementById("compoundInterestChart");
-      window.compoundInterestChart = new Chart(ctx, {
-        type: "bar",
-        data: {
-          labels: years,
-          datasets: [{
-              label: "Total Deposits",
-              data: yearlyTotalDeposits,
-              // backgroundColor: "rgba(141, 13, 38,1.0)",
-              // borderColor: "rgba(220, 221, 225,1.0)",
-              backgroundColor: "rgba(113, 128, 147,.5)",
-              borderColor: "rgba(113, 128, 147,1)",
-
-
-              borderWidth: 1
-            },
-            {
-              label: "Total Interest",
-              data: yearlyTotalInterest,
-              // backgroundColor: "rgba(220, 221, 225,1.0)",
-              // borderColor: "rgba(220, 221, 225,1.0)",
-              backgroundColor: "rgba(0, 50, 100,.7)",
-              borderColor: "rgba(0, 75, 150,1)",
-              // backgroundColor: "rgba(53, 59, 72,1.0)",
-              // borderColor: "rgba(39, 60, 117,1.0)",
-              // backgroundColor: "rgba(189, 195, 199,1.0)",
-              // borderColor: "rgba(189, 195, 199,1.0)",
-
-              borderWidth: 1
-            }
-          ]
-        },
-        options: {
-          legend: {
-            display: true,
-            labels: {
-              padding: 20
-            }
-          },
-
-          tooltips: {
-            mode: 'index',
-            intersect: false,
-            callbacks: {
-
-              label: function (multiTooltipTemplate, data) {
-                return formatter.format(multiTooltipTemplate.yLabel);
-              }
-              // label: function (tooltipItem, data) {
-              //   return "$" + Number(tooltipItem.yLabel).toFixed(0).replace(/./g, function (c, i, a) {
-              //     return i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "," + c : c;
-              //   });
-            }
-          },
-
-          scales: {
-            xAxes: [{
-              stacked: true,
-              id: 'first-x-axis',
-            }],
-            yAxes: [{
-              stacked: true,
-              ticks: {
-                // Include a dollar sign in the ticks
-                callback: function (value, index, values) {
-                  return formatter.format(value);
+              if (plusOrMinus == "+") {
+                $("input[id=" + inputID + "]").val((currentVal += step));
+              } else if (plusOrMinus == "-") {
+                if (currentVal - step >= minVal) {
+                  $("input[id=" + inputID + "]").val((currentVal -= step));
                 }
               }
+            }, 150);
+          })
+          .bind("mouseup mouseleave touchend", function() {
+            if (inMouseDown) {
+              calculateFutureValue();
+            }
 
-            }]
+            inMouseDown = false;
+            clearInterval(timeOut);
+          });
+      });
+
+      function checkSize() {
+        if ($(".smallScreenTotalOutput").css("display") == "none") {
+          $("#smallScreenAd").hide();
+          $("#largeScreenAd").show();
+        } else {
+          $("#smallScreenAd").show();
+          $("#largeScreenAd").hide();
+        }
+      }
+
+      // for when the user clicks once on the plus or minus buttons
+      $('button[name = "+"], button[name = "-"]').on("click", function(e) {
+        inputID = $(this).attr("for");
+        currentVal = parseFloat($("input[id=" + inputID + "]").val());
+        step = parseFloat($("input[id=" + inputID + "]").attr("step"));
+        minVal = parseFloat($("input[id=" + inputID + "]").attr("min"));
+        plusOrMinus = $(this).attr("name");
+
+        if (plusOrMinus == "+") {
+          $("input[id=" + inputID + "]").val(currentVal + step);
+        } else if (plusOrMinus == "-") {
+          if (currentVal - step >= minVal) {
+            $("input[id=" + inputID + "]").val(currentVal - step);
           }
         }
-      });
-    }
-  </script>
-</body>
 
+        calculateFutureValue();
+      });
+
+      function calculateFutureValue() {
+        years = [];
+        yearlyTotalDeposits = [];
+        yearlyTotalInterest = [];
+
+        let totalDepositsValue = 0;
+        let totalInterestValue = 0;
+
+        initialPrincipleValue = +$("#initialPrinciple").val();
+        depositsValue = +$("#deposits").val();
+
+        // monthlyDepositRadio = $('#monthlyDepositRadio').is(':checked');
+        // annualDepositRadio = $('#annualDepositRadio').is(':checked');
+
+        interestRatePercentageValue = +$("#interestRatePercentage").val();
+        numberOfYearsValue = +$("#numberOfYears").val();
+
+        dailyCompoundRadio = $("#dailyCompoundRadio").is(":checked");
+        monthlyCompoundRadio = $("#monthlyCompoundRadio").is(":checked");
+        annualCompoundRadio = $("#annualCompoundRadio").is(":checked");
+
+        // console.log("initialPrincipleValue", initialPrincipleValue);
+        // console.log("depositsValue", depositsValue);
+        // console.log("monthlyDepositRadio", monthlyDepositRadio);
+        // console.log("annualDepositRadio", annualDepositRadio);
+        // console.log("interestRatePercentageValue", interestRatePercentageValue);
+        // console.log("numberOfYearsValue", numberOfYearsValue);
+        // console.log("dailyCompoundRadio", dailyCompoundRadio);
+        // console.log("monthlyCompoundRadio", monthlyCompoundRadio);
+        // console.log("annualCompoundRadio", annualCompoundRadio);
+
+        // Future Value
+        var initialPrinciple = +initialPrincipleValue;
+        var deposit = +depositsValue;
+        var annualRate = +interestRatePercentageValue;
+        var monthlyRate = +annualRate / 12 / 100;
+        var dailyRate = +annualRate / 365 / 100;
+        var numberOfYears = +numberOfYearsValue;
+        var months = +numberOfYears * 12;
+        var futureValue = +initialPrinciple;
+        var compoundFrequency = 0;
+        var rate = 0.0;
+
+        // compound frequency and rate
+        if (dailyCompoundRadio) {
+          rate = +dailyRate;
+          compoundFrequency = +numberOfYears * 365;
+        } else if (monthlyCompoundRadio) {
+          rate = +monthlyRate;
+          compoundFrequency = +numberOfYears * 12;
+        } else if (annualCompoundRadio) {
+          rate = +annualRate / 100;
+          compoundFrequency = +numberOfYears;
+        }
+
+        for (i = 1; i <= +compoundFrequency; i++) {
+          // if daily compounded, must change deposit according to whether it's monthly or annually
+          if (dailyCompoundRadio) {
+            // every 30 days make a deposit
+            if (i % 30 == 0) {
+              // depsoit = +depositsValue;
+              totalDepositsValue += +depositsValue;
+              futureValue = (futureValue + deposit) * (1 + +rate);
+
+              // console.log(+totalDepositsValue)
+              // else don't
+            } else {
+              deposit = 0;
+            }
+          } else if (annualCompoundRadio) {
+            // deposit = +depositsValue * 12;
+            totalDepositsValue += +depositsValue * 12;
+            futureValue = (futureValue + deposit * 12) * (1 + +rate);
+          } else {
+            totalDepositsValue += +depositsValue;
+            futureValue = (futureValue + deposit) * (1 + +rate);
+          }
+
+          // console.log("futureValue", futureValue)
+
+          if (dailyCompoundRadio) {
+            if (i % 365 == 0) {
+              totalInterestValue =
+                +futureValue - +totalDepositsValue - +initialPrinciple;
+              yearlyTotalInterest.push(+totalInterestValue);
+              yearlyTotalDeposits.push(+totalDepositsValue + +initialPrinciple);
+            }
+          } else if (monthlyCompoundRadio) {
+            if (i % 12 == 0) {
+              totalInterestValue =
+                +futureValue - +totalDepositsValue - +initialPrinciple;
+              yearlyTotalInterest.push(+totalInterestValue);
+              yearlyTotalDeposits.push(+totalDepositsValue + +initialPrinciple);
+            }
+          } else if (annualCompoundRadio) {
+            totalInterestValue =
+              +futureValue - +totalDepositsValue - +initialPrinciple;
+            yearlyTotalInterest.push(+totalInterestValue);
+            yearlyTotalDeposits.push(+totalDepositsValue + +initialPrinciple);
+          }
+        }
+
+        var currentYear = new Date().getFullYear();
+
+        for (let i = 1; i <= numberOfYears; i++) {
+          years.push(currentYear + i);
+        }
+
+        $(".finalTotalDeposits").text(
+          formatter.format(totalDepositsValue + initialPrinciple)
+        );
+        $(".finalTotalInterest").text(formatter.format(totalInterestValue));
+        $(".finalTotalBalance").text(
+          formatter.format(
+            totalDepositsValue + totalInterestValue + initialPrinciple
+          )
+        );
+
+        updateChart();
+      }
+
+      function updateChart() {
+        if (window.compoundInterestChart) {
+          window.compoundInterestChart.destroy();
+        }
+        var ctx = document.getElementById("compoundInterestChart");
+        window.compoundInterestChart = new Chart(ctx, {
+          type: "bar",
+          data: {
+            labels: years,
+            datasets: [
+              {
+                label: "Total Deposits",
+                data: yearlyTotalDeposits,
+                // backgroundColor: "rgba(141, 13, 38,1.0)",
+                // borderColor: "rgba(220, 221, 225,1.0)",
+                backgroundColor: "rgba(113, 128, 147,.5)",
+                borderColor: "rgba(113, 128, 147,1)",
+
+                borderWidth: 1
+              },
+              {
+                label: "Total Interest",
+                data: yearlyTotalInterest,
+                // backgroundColor: "rgba(220, 221, 225,1.0)",
+                // borderColor: "rgba(220, 221, 225,1.0)",
+                backgroundColor: "rgba(0, 50, 100,.7)",
+                borderColor: "rgba(0, 75, 150,1)",
+                // backgroundColor: "rgba(53, 59, 72,1.0)",
+                // borderColor: "rgba(39, 60, 117,1.0)",
+                // backgroundColor: "rgba(189, 195, 199,1.0)",
+                // borderColor: "rgba(189, 195, 199,1.0)",
+
+                borderWidth: 1
+              }
+            ]
+          },
+          options: {
+            legend: {
+              display: true,
+              labels: {
+                padding: 20
+              }
+            },
+
+            tooltips: {
+              mode: "index",
+              intersect: false,
+              callbacks: {
+                label: function(multiTooltipTemplate, data) {
+                  return formatter.format(multiTooltipTemplate.yLabel);
+                }
+                // label: function (tooltipItem, data) {
+                //   return "$" + Number(tooltipItem.yLabel).toFixed(0).replace(/./g, function (c, i, a) {
+                //     return i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "," + c : c;
+                //   });
+              }
+            },
+
+            scales: {
+              xAxes: [
+                {
+                  stacked: true,
+                  id: "first-x-axis"
+                }
+              ],
+              yAxes: [
+                {
+                  stacked: true,
+                  ticks: {
+                    // include a dollar sign in the ticks
+                    callback: function(value, index, values) {
+                      return formatter.format(value);
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        });
+      }
+    </script>
+  </body>
 </html>
