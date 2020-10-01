@@ -175,9 +175,7 @@
     <div class="container">
       <div class="card cardShadow">
         <div class="card-body">
-          <h1 class="text-center mb-3 header">
-            Compound Interest Calculator
-          </h1>
+          <h1 class="text-center mb-3 header">Compound Interest Calculator</h1>
           <h5 class="quote card-subtitle">
             “Compound interest is the eighth wonder of the world. <br />He who
             understands it, earns it. he who doesn't, pays it.”
@@ -203,8 +201,10 @@
                     </button>
                   </div>
                   <input
+                    inputmode="numeric"
+                    pattern="[0-9]*"
                     id="initialPrinciple"
-                    type="number"
+                    type="text"
                     class="form-control"
                     placeholder=""
                     aria-label=""
@@ -241,8 +241,10 @@
                     </button>
                   </div>
                   <input
+                    inputmode="numeric"
+                    pattern="[0-9]*"
                     id="deposits"
-                    type="number"
+                    type="text"
                     class="form-control"
                     placeholder=""
                     aria-label=""
@@ -290,8 +292,10 @@
                     </button>
                   </div>
                   <input
+                    inputmode="numeric"
+                    pattern="[0-9]*"
                     id="interestRatePercentage"
-                    type="number"
+                    type="text"
                     class="form-control"
                     placeholder=""
                     aria-label=""
@@ -327,8 +331,10 @@
                     </button>
                   </div>
                   <input
+                    inputmode="numeric"
+                    pattern="[0-9]*"
                     id="numberOfYears"
-                    type="number"
+                    type="text"
                     class="form-control"
                     placeholder=""
                     aria-label=""
@@ -358,6 +364,8 @@
             </div> -->
                 <div class="custom-control custom-radio d-inline-block mr-2">
                   <input
+                    inputmode="numeric"
+                    pattern="[0-9]*"
                     type="radio"
                     id="monthlyCompoundRadio"
                     name="compoundFrequencyRadio"
@@ -399,7 +407,7 @@
                     <span class="finalTotalBalance"></span>
                   </label>
                 </div>
-                <hr style="margin-top: 5px; margin-bottom: 0px;" />
+                <hr style="margin-top: 5px; margin-bottom: 0px" />
               </div>
 
               <canvas
@@ -424,7 +432,7 @@
                     <span class="finalTotalBalance"></span>
                   </label>
                 </div>
-                <hr style="margin-top: 5px;" />
+                <hr style="margin-top: 5px" />
               </div>
             </div>
           </div>
